@@ -29,7 +29,7 @@ jobs:
         run: npm ci
 
       - name: Ejecutar pruebas
-        run: npm test -- --watch=false
+        run: npm test -- --watch=false --browsers=ChromeHeadless
 
       - name: Construir Angular
         run: npm run build
