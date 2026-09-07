@@ -11,8 +11,7 @@ Repositorio con frontend Angular, integración continua mediante GitHub Actions 
 - [Parte I — Repositorio y frontend](#parte-i--repositorio-y-frontend) (P1–P4)
 - [Parte II — Integración Continua](#parte-ii--integración-continua) (P5–P9)
 - [Parte III — Secretos y configuración](#parte-iii--secretos-y-configuración) (P10–P12)
-- [Parte IV — Entrega Continua con Terraform](#parte-iv--entrega-continua-con-terraform) (P13–P16)
-- [Anexo — Incidente resuelto](#anexo--incidente-resuelto)
+- [Parte IV — Entrega Continua con Terraform](#parte-iv--entrega-continua-con-terraform) (P13–
 
 ---
 
