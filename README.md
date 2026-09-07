@@ -285,20 +285,3 @@ Porque el valor se **inyecta en tiempo de ejecución** y nunca queda escrito en 
 En el workflow, el paso *Verificar secreto configurado* ejecuta `test -n "$DEMO_TOKEN"`, que falla si la variable está vacía. Es una comprobación defensiva: detiene el pipeline temprano y con un mensaje claro si el secreto no fue configurado, en lugar de fallar más adelante con un error confuso.
 
 ---
-
-## Anexo — Incidente resuelto
-
-**Síntoma:** el paso *Ejecutar pruebas* falló en GitHub Actions con `Missing X server or $DISPLAY`, pese a que `npm test` pasaba correctamente en local.
-
-**Causa:** Karma lanza Chrome en modo normal, que requiere un entorno gráfico. El runner `ubuntu-latest` es un servidor sin pantalla, por lo que Chrome no puede inicializarse y el job termina con exit code 1.
-
-**Solución:**
-
-```yaml
-- name: Ejecutar pruebas
-  run: npm test -- --watch=false --browsers=ChromeHeadless
-```
-
-`ChromeHeadless` es el mismo navegador ejecutándose sin interfaz gráfica: renderiza en memoria y no necesita servidor X.
-
-**Lección aplicable:** es un caso clásico de *"funciona en mi pc"*. Que una tarea corra localmente es condición **necesaria pero no suficiente** para que corra en CI: el entorno de integración tiene restricciones propias (sin GUI, sin estado previo, sin configuración manual) que el equipo del desarrollador no tiene. Se relaciona directamente con la Pregunta 6.
